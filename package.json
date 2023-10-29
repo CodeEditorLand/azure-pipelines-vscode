@@ -29,7 +29,7 @@
     "email": "nikola@nikolahristov.tech",
     "url": "https://nikolahristov.tech"
   },
-  "publisher": "ms-azure-devops",
+  "publisher": "playform",
   "type": "module",
   "main": "./dist/extension",
   "scripts": {
