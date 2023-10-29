@@ -1,20 +1,41 @@
 {
   "name": "extract-yaml-testcases",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A tool for extracting YAML test cases from a C# file",
   "main": "./out/main.js",
   "scripts": {
     "prestart": "npm run compile",
     "start": "node ./out/main.js",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "watch": "tsc -watch -p ./",
+    "prepublishOnly": "TypeScriptESBuild Source/**/*.ts"
   },
-  "author": "Microsoft",
+  "author": {
+    "name": "Nikola Hristov",
+    "email": "nikola@nikolahristov.tech",
+    "url": "https://nikolahristov.tech"
+  },
   "license": "MIT",
   "dependencies": {
     "@types/node": "20.8.9",
     "ts-node": "10.9.1",
     "tslint": "5.20.1",
     "typescript": "5.2.2"
+  },
+  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
+  "bugs": {
+    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
+  },
+  "type": "module",
+  "private": "false",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "typescript-esbuild": "0.3.1"
   }
 }
