@@ -1,27 +1,8 @@
 {
   "name": "extract-yaml-testcases",
   "version": "0.0.1",
+  "private": "false",
   "description": "A tool for extracting YAML test cases from a C# file",
-  "main": "./out/main.js",
-  "scripts": {
-    "prestart": "npm run compile",
-    "start": "node ./out/main.js",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "prepublishOnly": "TypeScriptESBuild Source/**/*.ts"
-  },
-  "author": {
-    "name": "Nikola Hristov",
-    "email": "nikola@nikolahristov.tech",
-    "url": "https://nikolahristov.tech"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "@types/node": "20.8.9",
-    "ts-node": "10.9.1",
-    "tslint": "5.20.1",
-    "typescript": "5.2.2"
-  },
   "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
   "bugs": {
     "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
@@ -30,12 +11,31 @@
     "type": "git",
     "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
   },
+  "license": "MIT",
+  "author": {
+    "name": "Nikola Hristov",
+    "email": "nikola@nikolahristov.tech",
+    "url": "https://nikolahristov.tech"
+  },
   "type": "module",
-  "private": "false",
-  "publishConfig": {
-    "access": "public"
+  "main": "./out/main.js",
+  "scripts": {
+    "compile": "tsc -p ./",
+    "prepublishOnly": "TypeScriptESBuild Source/**/*.ts",
+    "prestart": "npm run compile",
+    "start": "node ./out/main.js",
+    "watch": "tsc -watch -p ./"
+  },
+  "dependencies": {
+    "@types/node": "20.8.9",
+    "ts-node": "10.9.1",
+    "tslint": "5.20.1",
+    "typescript": "5.2.2"
   },
   "devDependencies": {
     "typescript-esbuild": "0.3.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

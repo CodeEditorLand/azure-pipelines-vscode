@@ -1,37 +1,13 @@
 {
   "name": "azure-pipelines",
   "displayName": "Azure Pipelines",
-  "description": "Syntax highlighting, IntelliSense, and more for Azure Pipelines YAML",
   "version": "0.0.1",
-  "publisher": "ms-azure-devops",
-  "aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
-  },
-  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
-  "bugs": {
-    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
-  },
-  "license": "MIT",
-  "icon": "assets/pipelines.png",
-  "galleryBanner": {
-    "color": "#D4DCEC",
-    "theme": "light"
-  },
-  "engines": {
-    "vscode": "1.64.0",
-    "node": ">=12.20.0"
-  },
+  "private": "false",
+  "description": "Syntax highlighting, IntelliSense, and more for Azure Pipelines YAML",
   "categories": [
     "Programming Languages",
     "Formatters",
     "Azure"
-  ],
-  "tags": [
-    "azure-pipelines",
-    "Azure Pipelines",
-    "YAML"
   ],
   "keywords": [
     "YAML",
@@ -39,46 +15,39 @@
     "continuous integration",
     "CI/CD"
   ],
-  "activationEvents": [
-    "onLanguage:azure-pipelines",
-    "onCommand:azure-pipelines.configure-pipeline"
-  ],
+  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
+  "bugs": {
+    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Nikola Hristov",
+    "email": "nikola@nikolahristov.tech",
+    "url": "https://nikolahristov.tech"
+  },
+  "publisher": "ms-azure-devops",
+  "type": "module",
   "main": "./dist/extension",
-  "capabilities": {
-    "untrustedWorkspaces": {
-      "supported": "limited",
-      "restrictedConfigurations": [
-        "azure-pipelines.customSchemaFile"
-      ]
-    }
+  "scripts": {
+    "compile": "webpack --mode production --progress --color",
+    "compile:dev": "webpack --mode development --progress --color",
+    "compile:test": "npm run compile:dev && tsc -p ./",
+    "prepublishOnly": "TypeScriptESBuild Source/**/*.ts",
+    "test": "npm run compile:test && node ./out/test/runTest.js",
+    "unittest": "npm run compile:test && mocha -u tdd out/unittest/**/*.js",
+    "vscode:prepublish": "npm run compile",
+    "watch": "webpack --mode development --progress --color --watch"
   },
   "contributes": {
-    "languages": [
+    "commands": [
       {
-        "id": "azure-pipelines",
-        "configuration": "./language-configuration.json",
-        "filenamePatterns": [
-          "azure-pipelines.yml",
-          "azure-pipelines.yaml",
-          ".azure-pipelines.yml",
-          ".azure-pipelines.yaml",
-          "azure-pipelines/**/*.yml",
-          "azure-pipelines/**/*.yaml",
-          ".azure-pipelines/**/*.yml",
-          ".azure-pipelines/**/*.yaml",
-          ".vsts-ci.yml",
-          "vsts-ci.yml"
-        ],
-        "aliases": [
-          "Azure Pipelines"
-        ]
-      }
-    ],
-    "grammars": [
-      {
-        "language": "azure-pipelines",
-        "scopeName": "source.yaml",
-        "path": "./syntaxes/yaml.tmLanguage.json"
+        "command": "azure-pipelines.configure-pipeline",
+        "title": "Configure Pipeline",
+        "category": "Azure Pipelines"
       }
     ],
     "configuration": {
@@ -115,11 +84,32 @@
         "editor.autoIndent": "full"
       }
     },
-    "commands": [
+    "grammars": [
       {
-        "command": "azure-pipelines.configure-pipeline",
-        "title": "Configure Pipeline",
-        "category": "Azure Pipelines"
+        "language": "azure-pipelines",
+        "scopeName": "source.yaml",
+        "path": "./syntaxes/yaml.tmLanguage.json"
+      }
+    ],
+    "languages": [
+      {
+        "id": "azure-pipelines",
+        "configuration": "./language-configuration.json",
+        "filenamePatterns": [
+          "azure-pipelines.yml",
+          "azure-pipelines.yaml",
+          ".azure-pipelines.yml",
+          ".azure-pipelines.yaml",
+          "azure-pipelines/**/*.yml",
+          "azure-pipelines/**/*.yaml",
+          ".azure-pipelines/**/*.yml",
+          ".azure-pipelines/**/*.yaml",
+          ".vsts-ci.yml",
+          "vsts-ci.yml"
+        ],
+        "aliases": [
+          "Azure Pipelines"
+        ]
       }
     ],
     "menus": {
@@ -132,15 +122,24 @@
       ]
     }
   },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "webpack --mode production --progress --color",
-    "compile:dev": "webpack --mode development --progress --color",
-    "watch": "webpack --mode development --progress --color --watch",
-    "compile:test": "npm run compile:dev && tsc -p ./",
-    "test": "npm run compile:test && node ./out/test/runTest.js",
-    "unittest": "npm run compile:test && mocha -u tdd out/unittest/**/*.js",
-    "prepublishOnly": "TypeScriptESBuild Source/**/*.ts"
+  "activationEvents": [
+    "onLanguage:azure-pipelines",
+    "onCommand:azure-pipelines.configure-pipeline"
+  ],
+  "dependencies": {
+    "@azure/arm-appservice": "14.0.0",
+    "@azure/arm-resources": "5.2.0",
+    "@azure/arm-subscriptions": "5.1.0",
+    "@azure/ms-rest-azure-env": "2.0.0",
+    "@azure/ms-rest-nodeauth": "3.1.1",
+    "@vscode/extension-telemetry": "0.8.5",
+    "azure-devops-node-api": "12.1.0",
+    "azure-pipelines-language-server": "0.7.0",
+    "html-to-text": "9.0.5",
+    "mustache": "4.2.0",
+    "uuid": "9.0.1",
+    "vscode-languageclient": "9.0.1",
+    "vscode-uri": "3.0.8"
   },
   "devDependencies": {
     "@types/fs-extra": "11.0.3",
@@ -161,36 +160,37 @@
     "ts-node": "10.9.1",
     "tslint": "5.20.1",
     "typescript": "5.2.2",
+    "typescript-esbuild": "0.3.1",
     "webpack": "5.89.0",
-    "webpack-cli": "5.1.4",
-    "typescript-esbuild": "0.3.1"
-  },
-  "dependencies": {
-    "@azure/arm-appservice": "14.0.0",
-    "@azure/arm-resources": "5.2.0",
-    "@azure/arm-subscriptions": "5.1.0",
-    "@azure/ms-rest-azure-env": "2.0.0",
-    "@azure/ms-rest-nodeauth": "3.1.1",
-    "@vscode/extension-telemetry": "0.8.5",
-    "azure-devops-node-api": "12.1.0",
-    "azure-pipelines-language-server": "0.7.0",
-    "html-to-text": "9.0.5",
-    "mustache": "4.2.0",
-    "uuid": "9.0.1",
-    "vscode-languageclient": "9.0.1",
-    "vscode-uri": "3.0.8"
+    "webpack-cli": "5.1.4"
   },
   "extensionDependencies": [
     "ms-vscode.azure-account"
   ],
-  "type": "module",
-  "private": "false",
+  "engines": {
+    "node": ">=12.20.0",
+    "vscode": "1.64.0"
+  },
   "publishConfig": {
     "access": "public"
   },
-  "author": {
-    "name": "Nikola Hristov",
-    "email": "nikola@nikolahristov.tech",
-    "url": "https://nikolahristov.tech"
-  }
+  "icon": "assets/pipelines.png",
+  "galleryBanner": {
+    "color": "#D4DCEC",
+    "theme": "light"
+  },
+  "aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "restrictedConfigurations": [
+        "azure-pipelines.customSchemaFile"
+      ]
+    }
+  },
+  "tags": [
+    "azure-pipelines",
+    "Azure Pipelines",
+    "YAML"
+  ]
 }
