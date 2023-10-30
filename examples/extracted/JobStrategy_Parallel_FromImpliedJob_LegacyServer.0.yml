@@ -1,4 +1,4 @@
 server:
-  parallel: 5
+    parallel: 5
 steps:
-- script: echo hi
+    - script: echo hi

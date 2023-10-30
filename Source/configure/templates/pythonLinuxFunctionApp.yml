@@ -4,73 +4,73 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
 trigger:
-- {{{ sourceRepository.branch }}}
+    - { { { sourceRepository.branch } } }
 
 variables:
-  # Azure Resource Manager connection
-  azureSubscription: '{{{ targetResource.serviceConnectionId }}}'
+    # Azure Resource Manager connection
+    azureSubscription: "{{{ targetResource.serviceConnectionId }}}"
 
-  # Web app name
-  functionAppName: '{{{ targetResource.resource.name }}}'
+    # Web app name
+    functionAppName: "{{{ targetResource.resource.name }}}"
 
-  # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+    # Agent VM image name
+    vmImageName: "ubuntu-latest"
 
 stages:
-- stage: Build
-  displayName: Build stage
-  jobs:
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: $(vmImageName)
+    - stage: Build
+      displayName: Build stage
+      jobs:
+          - job: Build
+            displayName: Build
+            pool:
+                vmImage: $(vmImageName)
 
-    steps:
-    - bash: |
-        if [ -f extensions.csproj ]
-        then
-            dotnet build extensions.csproj --output ./bin
-        fi
-      displayName: 'Build extensions'
+            steps:
+                - bash: |
+                      if [ -f extensions.csproj ]
+                      then
+                          dotnet build extensions.csproj --output ./bin
+                      fi
+                  displayName: "Build extensions"
 
-    - bash: |
-        python -m venv worker_venv
-        source worker_venv/bin/activate
-        pip install -r requirements.txt
-      displayName: 'Install application dependencies'
+                - bash: |
+                      python -m venv worker_venv
+                      source worker_venv/bin/activate
+                      pip install -r requirements.txt
+                  displayName: "Install application dependencies"
 
-    - task: ArchiveFiles@2
-      displayName: 'Archive files'
-      inputs:
-        rootFolderOrFile: '.'
-        includeRootFolder: false
-        archiveType: zip
-        archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-        replaceExistingArchive: true
+                - task: ArchiveFiles@2
+                  displayName: "Archive files"
+                  inputs:
+                      rootFolderOrFile: "."
+                      includeRootFolder: false
+                      archiveType: zip
+                      archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+                      replaceExistingArchive: true
 
-    - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-      artifact: drop
+                - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+                  artifact: drop
 
-- stage: Deploy
-  displayName: Deploy stage
-  dependsOn: Build
-  condition: succeeded()
+    - stage: Deploy
+      displayName: Deploy stage
+      dependsOn: Build
+      condition: succeeded()
 
-  jobs:
-  - deployment: Deploy
-    displayName: Deploy
-    environment: $(functionAppName)
-    pool:
-      vmImage: $(vmImageName)
+      jobs:
+          - deployment: Deploy
+            displayName: Deploy
+            environment: $(functionAppName)
+            pool:
+                vmImage: $(vmImageName)
 
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - task: AzureFunctionApp@1
-            displayName: 'Azure functions app deploy'
-            inputs:
-              azureSubscription: '$(azureSubscription)'
-              appType: functionAppLinux
-              appName: $(functionAppName)
-              package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
+            strategy:
+                runOnce:
+                    deploy:
+                        steps:
+                            - task: AzureFunctionApp@1
+                              displayName: "Azure functions app deploy"
+                              inputs:
+                                  azureSubscription: "$(azureSubscription)"
+                                  appType: functionAppLinux
+                                  appName: $(functionAppName)
+                                  package: "$(Pipeline.Workspace)/drop/$(Build.BuildId).zip"

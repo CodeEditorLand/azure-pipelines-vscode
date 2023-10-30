@@ -1,2 +1,2 @@
 jobs:
-- template: ttt-dir\ttt-jobs.yml
+    - template: ttt-dir\ttt-jobs.yml

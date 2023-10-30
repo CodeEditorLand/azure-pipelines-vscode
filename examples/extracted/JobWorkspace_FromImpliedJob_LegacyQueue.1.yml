@@ -1,5 +1,5 @@
 pool: myPool
 workspace:
-  clean: all
+    clean: all
 steps:
-- script: echo hi
+    - script: echo hi
