@@ -1,4 +1,4 @@
 steps:
-    - template: my-steps.yml
-      parameters:
-          sign: true
+- template: my-steps.yml
+  parameters:
+    sign: true

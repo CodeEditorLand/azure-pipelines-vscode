@@ -1,6 +1,6 @@
 queue:
-    name: myPool
-    workspace:
-        clean: all
+  name: myPool
+  workspace:
+    clean: all
 steps:
-    - script: echo hi
+- script: echo hi

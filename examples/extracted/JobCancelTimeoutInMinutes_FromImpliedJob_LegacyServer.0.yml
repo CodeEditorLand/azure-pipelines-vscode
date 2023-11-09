@@ -1,4 +1,4 @@
 server:
-    cancelTimeoutInMinutes: 5
+  cancelTimeoutInMinutes: 5
 steps:
-    - task: Bash@3
+- task: Bash@3

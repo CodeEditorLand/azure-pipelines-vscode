@@ -1,2 +1,2 @@
 steps:
-    - script: echo hi from zzz-steps.yml
+- script: echo hi from zzz-steps.yml

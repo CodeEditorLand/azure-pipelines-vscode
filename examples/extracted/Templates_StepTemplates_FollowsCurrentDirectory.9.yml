@@ -1,2 +1,2 @@
 steps:
-    - template: ttt-dir\ttt-steps.yml
+- template: ttt-dir\ttt-steps.yml

@@ -1,2 +1,2 @@
 steps:
-    - template: pipeline.yml
+- template: pipeline.yml

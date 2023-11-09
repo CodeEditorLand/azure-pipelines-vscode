@@ -1,4 +1,4 @@
 steps:
-    - template: my-steps.yml
-      parameters:
-          greeting1: echo hi john doe
+- template: my-steps.yml
+  parameters:
+    greeting1: echo hi john doe

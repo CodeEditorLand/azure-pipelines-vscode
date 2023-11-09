@@ -1,4 +1,4 @@
 variables:
-    var1: val1
+  var1: val1
 steps:
-    - script: echo hello
+- script: echo hello

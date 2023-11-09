@@ -1,10 +1,10 @@
 resources:
-    containers:
-        - container: dev1
-          image: ubuntu:16.04
-          type: docker
+  containers:
+  - container: dev1
+    image: ubuntu:16.04
+    type: docker
 queue:
-    name: myPool
-    container: dev1
+  name: myPool
+  container: dev1
 steps:
-    - script: echo hi
+- script: echo hi

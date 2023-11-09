@@ -1,4 +1,4 @@
 phases:
-    - phase: job1
-    - phase: job2
-      server: true
+- phase: job1
+- phase: job2
+  server: true

@@ -1,2 +1,2 @@
 steps:
-    - script: echo hi from bbb-steps.yml
+- script: echo hi from bbb-steps.yml

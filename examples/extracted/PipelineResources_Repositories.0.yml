@@ -1,15 +1,15 @@
 resources:
-    repositories:
-        - repository: vso
-          clean: true
-          ref: main
-          type: tfsgit
-        - repository: vso.vc
-          mappings:
-              - localPath: $(Agent.SourcesDir)
-                serverPath: $/Foo
-              - cloak: true
-                serverPath: $/Foo/Bar
-          type: tfsversioncontrol
+  repositories:
+  - repository: vso
+    clean: true
+    ref: main
+    type: tfsgit
+  - repository: vso.vc
+    mappings:
+    - localPath: $(Agent.SourcesDir)
+      serverPath: $/Foo
+    - cloak: true
+      serverPath: $/Foo/Bar
+    type: tfsversioncontrol
 steps:
-    - task: Bash@3
+- task: Bash@3

@@ -1,7 +1,7 @@
 resources:
-    repositories:
-        - repository: tools
+  repositories:
+  - repository: tools
 jobs:
-    - template: aaa-jobs.yml
-    - template: tools-entry-dir\tools-jobs.yml@tools
-    - template: zzz-jobs.yml
+- template: aaa-jobs.yml
+- template: tools-entry-dir\tools-jobs.yml@tools
+- template: zzz-jobs.yml

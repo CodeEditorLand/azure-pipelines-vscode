@@ -1,2 +1,2 @@
 steps:
-    - script: this one is wrong!
+- script: this one is wrong!

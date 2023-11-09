@@ -1,5 +1,5 @@
 resources:
-    - repo: self
-      abc: def
+- repo: self
+  abc: def
 steps:
-    - script: echo hi
+- script: echo hi

@@ -1,2 +1,2 @@
 steps:
-    - template: my-jobs.yml
+- template: my-jobs.yml

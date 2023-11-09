@@ -1,6 +1,6 @@
 variables:
-    var1: val1
+  var1: val1
 jobs:
-    - job: jobOne
-      steps:
-          - script: echo hello
+- job: jobOne
+  steps:
+  - script: echo hello

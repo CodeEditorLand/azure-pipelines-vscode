@@ -1,4 +1,4 @@
 steps:
-    - script: echo hello from entry file 1
-    - template: my-steps.yml
-    - script: echo hello from entry file 2
+- script: echo hello from entry file 1
+- template: my-steps.yml
+- script: echo hello from entry file 2
