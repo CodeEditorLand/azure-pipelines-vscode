@@ -1,6 +1,6 @@
 resources:
-- repo: self
-  clean:
-  - foo
+    - repo: self
+      clean:
+          - foo
 steps:
-- script: echo hi
+    - script: echo hi

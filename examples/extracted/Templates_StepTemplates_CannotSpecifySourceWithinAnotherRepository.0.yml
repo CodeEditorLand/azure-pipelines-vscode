@@ -1,5 +1,5 @@
 resources:
-  repositories:
-  - repository: tools
+    repositories:
+        - repository: tools
 steps:
-- template: my-steps.yml@tools
+    - template: my-steps.yml@tools

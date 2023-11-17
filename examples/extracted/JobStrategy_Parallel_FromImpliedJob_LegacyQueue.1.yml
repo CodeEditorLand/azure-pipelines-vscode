@@ -1,5 +1,5 @@
 strategy:
-  parallel: 5
+    parallel: 5
 pool: myPool
 steps:
-- script: echo hi
+    - script: echo hi

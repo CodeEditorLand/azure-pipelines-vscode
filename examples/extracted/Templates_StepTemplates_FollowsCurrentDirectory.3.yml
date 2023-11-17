@@ -1,2 +1,2 @@
 steps:
-- template: bbb-dir\bbb-steps.yml
+    - template: bbb-dir\bbb-steps.yml

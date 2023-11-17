@@ -1,5 +1,5 @@
 queue:
-  name: myPool
-  timeoutInMinutes: 5
+    name: myPool
+    timeoutInMinutes: 5
 steps:
-- script: echo hi
+    - script: echo hi

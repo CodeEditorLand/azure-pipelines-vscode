@@ -1,4 +1,4 @@
 trigger:
-- main
+    - main
 steps:
-- script: echo hello
+    - script: echo hello

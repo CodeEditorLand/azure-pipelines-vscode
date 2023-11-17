@@ -1,2 +1,2 @@
 steps:
-- script: echo hi 1
+    - script: echo hi 1
