@@ -141,7 +141,7 @@
 		"@types/uuid": "8.3.4",
 		"@types/vscode": "~1.64.0",
 		"@vscode/test-electron": "1.6.2",
-		"ajv": "6.9.1",
+		"ajv": "6.12.3",
 		"assert": "1.4.1",
 		"copy-webpack-plugin": "10.2.0",
 		"glob": "7.1.6",
