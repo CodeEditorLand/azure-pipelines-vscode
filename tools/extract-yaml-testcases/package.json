@@ -1,30 +1,24 @@
 {
-	"author": {
-		"email": "Hello@Playform.Cloud",
-		"name": "Playform",
-		"url": "https://playform.cloud"
-	},
+	"name": "extract-yaml-testcases",
+	"version": "0.0.1",
+	"private": false,
+	"description": "A tool for extracting YAML test cases from a C# file",
+	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
 	"bugs": {
 		"url": "https://github.com/CodeEditorLand/Foundation/issues"
-	},
-	"description": "A tool for extracting YAML test cases from a C# file",
-	"devDependencies": {
-		"@types/node": "~20.9.2",
-		"typescript": "~5.2.2",
-		"typescript-esbuild": ""
-	},
-	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
-	"license": "SEE LICENSE IN LICENSE",
-	"main": "./out/main.js",
-	"name": "extract-yaml-testcases",
-	"private": false,
-	"publishConfig": {
-		"access": "public"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
 	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Playform",
+		"email": "Hello@Playform.Cloud",
+		"url": "https://playform.cloud"
+	},
+	"type": "module",
+	"main": "./out/main.js",
 	"scripts": {
 		"compile": "tsc -p ./",
 		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
@@ -32,6 +26,12 @@
 		"start": "node ./out/main.js",
 		"watch": "tsc -watch -p ./"
 	},
-	"type": "module",
-	"version": "0.0.1"
+	"devDependencies": {
+		"@types/node": "~20.9.2",
+		"typescript": "~5.2.2",
+		"typescript-esbuild": "0.4.5"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }
