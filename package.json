@@ -1,27 +1,7 @@
 {
 	"name": "azure-pipelines",
 	"displayName": "Azure Pipelines",
-	"version": "0.0.1",
-	"private": false,
 	"description": "Syntax highlighting, IntelliSense, and more for Azure Pipelines YAML",
-	"keywords": [
-		"land"
-	],
-	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/AzurePipelinesLand#readme",
-	"bugs": {
-		"url": "HTTPS://GitHub.Com/CodeEditorLand/AzurePipelinesLand/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+HTTPS://github.com/CodeEditorLand/AzurePipelinesLand.git"
-	},
-	"license": "SEE LICENSE IN LICENSE",
-	"author": {
-		"name": "🛬 Land —",
-		"email": "Land@PlayForm.Cloud",
-		"url": "HTTPS://Land.PlayForm.Cloud"
-	},
-	"type": "module",
 	"main": "./dist/extension",
 	"scripts": {
 		"Document": "Document 'Source/**/*.ts'",
@@ -127,7 +107,6 @@
 	},
 	"devDependencies": {
 		"@playform/build": "0.0.7",
-		"@playform/document": "0.0.6",
 		"@types/glob": "8.1.0",
 		"@types/html-to-text": "9.0.4",
 		"@types/mustache": "4.2.5",
@@ -139,9 +118,6 @@
 	"extensionDependencies": [
 		"ms-vscode.azure-account"
 	],
-	"publishConfig": {
-		"access": "public"
-	},
 	"icon": "assets/pipelines.png",
 	"galleryBanner": {
 		"color": "#D4DCEC",
