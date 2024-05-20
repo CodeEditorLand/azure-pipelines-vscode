@@ -1,16 +1,19 @@
 {
-	"name": "extract-yaml-testcases",
-	"description": "A tool for extracting YAML test cases from a C# file",
-	"main": "./out/main.js",
-	"scripts": {
-		"Document": "Document 'Source/**/*.ts'",
-		"compile": "tsc -p ./",
-		"prepublishOnly": "Build 'Source/**/*.ts'",
-		"prestart": "npm run compile",
-		"start": "node ./out/main.js"
-	},
-	"devDependencies": {
-		"@playform/build": "0.0.7",
-		"@types/node": "20.12.11"
-	}
+  "name": "extract-yaml-testcases",
+  "version": "1.0.0",
+  "description": "A tool for extracting YAML test cases from a C# file",
+  "main": "./out/main.js",
+  "type": "module",
+  "scripts": {
+    "prestart": "npm run compile",
+    "start": "node ./out/main.js",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "author": "Microsoft",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "~20.9.2",
+    "typescript": "~5.2.2"
+  }
 }
