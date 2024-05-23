@@ -109,7 +109,7 @@
 		"@types/mustache": "4.2.5",
 		"@types/node": "20.12.12",
 		"@types/uuid": "9.0.8",
-		"glob": "10.3.15",
+		"glob": "10.3.16",
 		"ts-loader": "9.5.1"
 	},
 	"extensionDependencies": [
