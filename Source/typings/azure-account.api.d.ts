@@ -6,14 +6,18 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { Event, Terminal, Progress, CancellationToken } from 'vscode';
-import { ServiceClientCredentials } from 'ms-rest';
-import { ReadStream } from 'fs';
-import { TokenCredentialsBase } from '@azure/ms-rest-nodeauth';
-import { Environment } from '@azure/ms-rest-azure-env';
-import { SubscriptionModels } from '@azure/arm-subscriptions';
+import type { ReadStream } from "fs";
+import type { SubscriptionModels } from "@azure/arm-subscriptions";
+import type { Environment } from "@azure/ms-rest-azure-env";
+import type { TokenCredentialsBase } from "@azure/ms-rest-nodeauth";
+import type { ServiceClientCredentials } from "ms-rest";
+import type { CancellationToken, Event, Progress, Terminal } from "vscode";
 
-export type AzureLoginStatus = 'Initializing' | 'LoggingIn' | 'LoggedIn' | 'LoggedOut';
+export type AzureLoginStatus =
+	| "Initializing"
+	| "LoggingIn"
+	| "LoggedIn"
+	| "LoggedOut";
 
 export interface AzureAccount {
 	readonly status: AzureLoginStatus;
@@ -27,7 +31,7 @@ export interface AzureAccount {
 	readonly filters: AzureResourceFilter[];
 	readonly onFiltersChanged: Event<void>;
 	readonly waitForFilters: () => Promise<boolean>;
-	createCloudShell(os: 'Linux' | 'Windows'): CloudShell;
+	createCloudShell(os: "Linux" | "Windows"): CloudShell;
 }
 
 export interface AzureSession {
@@ -53,7 +57,7 @@ export interface AzureSubscription {
 
 export type AzureResourceFilter = AzureSubscription;
 
-export type CloudShellStatus = 'Connecting' | 'Connected' | 'Disconnected';
+export type CloudShellStatus = "Connecting" | "Connected" | "Disconnected";
 
 export interface UploadOptions {
 	contentLength?: number;
@@ -67,5 +71,9 @@ export interface CloudShell {
 	readonly waitForConnection: () => Promise<boolean>;
 	readonly terminal: Promise<Terminal>;
 	readonly session: Promise<AzureSession>;
-	readonly uploadFile: (filename: string, stream: ReadStream, options?: UploadOptions) => Promise<void>;
+	readonly uploadFile: (
+		filename: string,
+		stream: ReadStream,
+		options?: UploadOptions,
+	) => Promise<void>;
 }
