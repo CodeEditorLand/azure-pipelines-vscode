@@ -2,7 +2,7 @@
 // minus localization
 
 export class UserCancelledError extends Error {
-	constructor() {
-		super("Operation cancelled.");
-	}
+    constructor() {
+        super('Operation cancelled.');
+    }
 }
