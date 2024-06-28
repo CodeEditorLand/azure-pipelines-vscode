@@ -1,12 +1,24 @@
 {
-	"name": "azure-pipelines",
-	"displayName": "Azure Pipelines",
-	"description": "Syntax highlighting, IntelliSense, and more for Azure Pipelines YAML",
-	"main": "./dist/extension",
-	"scripts": {
-		"compile": "webpack --mode production --progress --color",
-		"compile:dev": "webpack --mode development --progress --color",
-		"compile:test": "tsc --project ./tsconfig.test.json"
+	"activationEvents": [
+		"onLanguage:azure-pipelines",
+		"onCommand:azure-pipelines.configure-pipeline"
+	],
+	"aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
+	"author": {
+		"email": "Source/Open@Editor.Land",
+		"name": "🖋️ Source — 👐🏻 Open —",
+		"url": "HTTPS://Editor.Land"
+	},
+	"bugs": {
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/AzurePipelinesLand/issues"
+	},
+	"capabilities": {
+		"untrustedWorkspaces": {
+			"restrictedConfigurations": [
+				"azure-pipelines.customSchemaFile"
+			],
+			"supported": "limited"
+		}
 	},
 	"contributes": {
 		"commands": [
@@ -94,16 +106,14 @@
 			]
 		}
 	},
-	"activationEvents": [
-		"onLanguage:azure-pipelines",
-		"onCommand:azure-pipelines.configure-pipeline"
-	],
 	"dependencies": {
 		"html-to-text": "9.0.5",
 		"mustache": "4.2.0",
 		"uuid": "10.0.0"
 	},
+	"description": "Syntax highlighting, IntelliSense, and more for Azure Pipelines YAML",
 	"devDependencies": {
+		"@playform/build": "0.0.11",
 		"@types/glob": "8.1.0",
 		"@types/html-to-text": "9.0.4",
 		"@types/mustache": "4.2.5",
@@ -112,21 +122,38 @@
 		"glob": "10.4.2",
 		"ts-loader": "9.5.1"
 	},
+	"displayName": "Azure Pipelines",
 	"extensionDependencies": [
 		"ms-vscode.azure-account"
 	],
-	"icon": "assets/pipelines.png",
 	"galleryBanner": {
 		"color": "#D4DCEC",
 		"theme": "light"
 	},
-	"aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
-	"capabilities": {
-		"untrustedWorkspaces": {
-			"restrictedConfigurations": [
-				"azure-pipelines.customSchemaFile"
-			],
-			"supported": "limited"
-		}
-	}
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/AzurePipelinesLand#readme",
+	"icon": "assets/pipelines.png",
+	"keywords": [
+		"codeeditorland",
+		"land",
+		"playform"
+	],
+	"license": "SEE LICENSE IN LICENSE",
+	"main": "./dist/extension",
+	"name": "azure-pipelines",
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+HTTPS://github.com/CodeEditorLand/AzurePipelinesLand.git"
+	},
+	"scripts": {
+		"compile": "webpack --mode production --progress --color",
+		"compile:dev": "webpack --mode development --progress --color",
+		"compile:test": "tsc --project ./tsconfig.test.json",
+		"prepublishOnly": "Build 'Source/**/*.ts'"
+	},
+	"type": "module",
+	"version": "0.0.1"
 }
