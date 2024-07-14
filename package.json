@@ -1,16 +1,12 @@
 {
-	"activationEvents": [
-		"onLanguage:azure-pipelines",
-		"onCommand:azure-pipelines.configure-pipeline"
-	],
-	"aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
-	"capabilities": {
-		"untrustedWorkspaces": {
-			"restrictedConfigurations": [
-				"azure-pipelines.customSchemaFile"
-			],
-			"supported": "limited"
-		}
+	"name": "azure-pipelines",
+	"displayName": "Azure Pipelines",
+	"description": "Syntax highlighting, IntelliSense, and more for Azure Pipelines YAML",
+	"main": "./dist/extension",
+	"scripts": {
+		"compile": "webpack --mode production --progress --color",
+		"compile:dev": "webpack --mode development --progress --color",
+		"compile:test": "tsc --project ./tsconfig.test.json"
 	},
 	"contributes": {
 		"commands": [
@@ -98,12 +94,15 @@
 			]
 		}
 	},
+	"activationEvents": [
+		"onLanguage:azure-pipelines",
+		"onCommand:azure-pipelines.configure-pipeline"
+	],
 	"dependencies": {
 		"html-to-text": "^5.1.1",
 		"mustache": "^4.2.0",
 		"uuid": "^8.3.2"
 	},
-	"description": "Syntax highlighting, IntelliSense, and more for Azure Pipelines YAML",
 	"devDependencies": {
 		"@types/glob": "^7.2.0",
 		"@types/html-to-text": "^5.1.2",
@@ -113,20 +112,21 @@
 		"glob": "^7.1.6",
 		"ts-loader": "^8.0.14"
 	},
-	"displayName": "Azure Pipelines",
 	"extensionDependencies": [
 		"ms-vscode.azure-account"
 	],
+	"icon": "assets/pipelines.png",
 	"galleryBanner": {
 		"color": "#D4DCEC",
 		"theme": "light"
 	},
-	"icon": "assets/pipelines.png",
-	"main": "./dist/extension",
-	"name": "azure-pipelines",
-	"scripts": {
-		"compile": "webpack --mode production --progress --color",
-		"compile:dev": "webpack --mode development --progress --color",
-		"compile:test": "tsc --project ./tsconfig.test.json"
+	"aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
+	"capabilities": {
+		"untrustedWorkspaces": {
+			"restrictedConfigurations": [
+				"azure-pipelines.customSchemaFile"
+			],
+			"supported": "limited"
+		}
 	}
 }
