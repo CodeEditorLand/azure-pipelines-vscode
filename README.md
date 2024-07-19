@@ -80,7 +80,7 @@ VS Code collects usage data and sends it to Microsoft to help improve our produc
 
     `git add *`
 
-    `git commit -m <commit-message>`
+    `git ecommit -m <commit-message>`
 
     `git remote add <remote-name> <remote-url>`
 
