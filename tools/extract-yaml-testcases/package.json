@@ -8,6 +8,6 @@
 		"start": "node ./out/main.js"
 	},
 	"devDependencies": {
-		"@types/node": "20.14.11"
+		"@types/node": "20.14.12"
 	}
 }
