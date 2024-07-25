@@ -1,13 +1,25 @@
 {
+<<<<<<< HEAD
 	"description": "A tool for extracting YAML test cases from a C# file",
 	"devDependencies": {
 		"@types/node": "~20.9.2"
 	},
 	"main": "./out/main.js",
 	"name": "extract-yaml-testcases",
+=======
+	"name": "extract-yaml-testcases",
+	"description": "A tool for extracting YAML test cases from a C# file",
+	"main": "./out/main.js",
+>>>>>>> fb0749c3d8a3774d3b669e2be54da4aff7637d9d
 	"scripts": {
 		"compile": "tsc -p ./",
 		"prestart": "npm run compile",
 		"start": "node ./out/main.js"
+<<<<<<< HEAD
+=======
+	},
+	"devDependencies": {
+		"@types/node": "20.14.12"
+>>>>>>> fb0749c3d8a3774d3b669e2be54da4aff7637d9d
 	}
 }

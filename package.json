@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"activationEvents": [
 		"onLanguage:azure-pipelines",
 		"onCommand:azure-pipelines.configure-pipeline"
@@ -11,6 +12,16 @@
 			],
 			"supported": "limited"
 		}
+=======
+	"name": "azure-pipelines",
+	"displayName": "Azure Pipelines",
+	"description": "Syntax highlighting, IntelliSense, and more for Azure Pipelines YAML",
+	"main": "./dist/extension",
+	"scripts": {
+		"compile": "webpack --mode production --progress --color",
+		"compile:dev": "webpack --mode development --progress --color",
+		"compile:test": "tsc --project ./tsconfig.test.json"
+>>>>>>> fb0749c3d8a3774d3b669e2be54da4aff7637d9d
 	},
 	"contributes": {
 		"commands": [
@@ -98,6 +109,7 @@
 			]
 		}
 	},
+<<<<<<< HEAD
 	"dependencies": {
 		"html-to-text": "^5.1.1",
 		"mustache": "^4.2.0",
@@ -117,10 +129,35 @@
 	"extensionDependencies": [
 		"ms-vscode.azure-account"
 	],
+=======
+	"activationEvents": [
+		"onLanguage:azure-pipelines",
+		"onCommand:azure-pipelines.configure-pipeline"
+	],
+	"dependencies": {
+		"html-to-text": "9.0.5",
+		"mustache": "4.2.0",
+		"uuid": "10.0.0"
+	},
+	"devDependencies": {
+		"@types/glob": "8.1.0",
+		"@types/html-to-text": "9.0.4",
+		"@types/mustache": "4.2.5",
+		"@types/node": "20.14.12",
+		"@types/uuid": "10.0.0",
+		"glob": "11.0.0",
+		"ts-loader": "9.5.1"
+	},
+	"extensionDependencies": [
+		"ms-vscode.azure-account"
+	],
+	"icon": "assets/pipelines.png",
+>>>>>>> fb0749c3d8a3774d3b669e2be54da4aff7637d9d
 	"galleryBanner": {
 		"color": "#D4DCEC",
 		"theme": "light"
 	},
+<<<<<<< HEAD
 	"icon": "assets/pipelines.png",
 	"main": "./dist/extension",
 	"name": "azure-pipelines",
@@ -128,5 +165,15 @@
 		"compile": "webpack --mode production --progress --color",
 		"compile:dev": "webpack --mode development --progress --color",
 		"compile:test": "tsc --project ./tsconfig.test.json"
+=======
+	"aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
+	"capabilities": {
+		"untrustedWorkspaces": {
+			"restrictedConfigurations": [
+				"azure-pipelines.customSchemaFile"
+			],
+			"supported": "limited"
+		}
+>>>>>>> fb0749c3d8a3774d3b669e2be54da4aff7637d9d
 	}
 }
