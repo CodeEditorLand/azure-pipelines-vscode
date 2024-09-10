@@ -1,12 +1,12 @@
 parameters:
-    variables: {}
+  variables: {}
 
 phases:
-    - phase: build
-      variables:
-          configuration: debug
-          arch: x86
-          ${{ insert }}: ${{ parameters.variables }}
-      steps:
-          - task: MSBuild@1
-          - task: VSTest@2
+- phase: build
+  variables:
+    configuration: debug
+    arch: x86
+    ${{ insert }}: ${{ parameters.variables }}
+  steps:
+  - task: MSBuild@1
+  - task: VSTest@2
