@@ -1,2 +1,2 @@
-export const CurrentUserInput = "currentUserInput";
-export const JourneyId = "journeyId";
+export const CurrentUserInput = 'currentUserInput';
+export const JourneyId = 'journeyId';

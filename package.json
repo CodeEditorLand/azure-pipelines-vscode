@@ -1,145 +1,96 @@
 {
-    "name": "azure-pipelines",
-    "displayName": "Azure Pipelines",
-    "description": "Syntax highlighting, IntelliSense, and more for Azure Pipelines YAML",
-    "version": "1.247.3",
-    "publisher": "ms-azure-devops",
-    "aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Microsoft/azure-pipelines-vscode"
-    },
-    "homepage": "https://github.com/Microsoft/azure-pipelines-vscode/blob/main/README.md",
-    "bugs": "https://github.com/Microsoft/azure-pipelines-vscode/issues/",
-    "license": "MIT",
-    "icon": "assets/pipelines.png",
-    "galleryBanner": {
-        "color": "#D4DCEC",
-        "theme": "light"
-    },
-    "engines": {
-        "vscode": "^1.82.0"
-    },
-    "categories": [
-        "Programming Languages",
-        "Formatters",
-        "Azure"
-    ],
-    "tags": [
-        "azure-pipelines",
-        "Azure Pipelines",
-        "YAML"
-    ],
-    "keywords": [
-        "YAML",
-        "Azure Pipelines",
-        "continuous integration",
-        "CI/CD"
-    ],
-    "main": "./dist/extension",
-    "capabilities": {
-        "untrustedWorkspaces": {
-            "supported": "limited",
-            "restrictedConfigurations": [
-                "azure-pipelines.customSchemaFile"
-            ]
-        }
-    },
-    "contributes": {
-        "languages": [
-            {
-                "id": "azure-pipelines",
-                "configuration": "./language-configuration.json",
-                "filenamePatterns": [
-                    "azure-pipelines.{yml,yaml}",
-                    ".azure-pipelines.{yml,yaml}",
-                    "**/azure-pipelines/**/*.{yml,yaml}",
-                    "**/.azure-pipelines/**/*.{yml,yaml}",
-                    "**/.pipelines/**/*.{yml,yaml}",
-                    "vsts-ci.{yml,yaml}",
-                    ".vsts-ci.{yml,yaml}"
-                ],
-                "aliases": [
-                    "Azure Pipelines"
-                ],
-                "icon": {
-                    "light": "./assets/pipelines-file-icon.svg",
-                    "dark": "./assets/pipelines-file-icon.svg"
-                }
-            }
-        ],
-        "grammars": [
-            {
-                "language": "azure-pipelines",
-                "scopeName": "source.yaml",
-                "path": "./syntaxes/yaml.tmLanguage.json"
-            }
-        ],
-        "configuration": {
-            "title": "Azure Pipelines",
-            "properties": {
-                "azure-pipelines.1ESPipelineTemplatesSchemaFile": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Use 1ES Pipeline Template schema file",
-                    "markdownDescription": "If enabled, [1ES Pipeline Template schema file](https://aka.ms/1espt) will take precedence over custom schema file when user is signed in with `@microsoft.com` account and the schema is available in the ADO organization."
-                },
-                "azure-pipelines.customSchemaFile": {
-                    "type": "string",
-                    "description": "Use a different schema file",
-                    "scope": "machine-overridable"
-                }
-            }
-        },
-        "configurationDefaults": {
-            "[azure-pipelines]": {
-                "editor.insertSpaces": true,
-                "editor.tabSize": 2,
-                "editor.quickSuggestions": {
-                    "other": true,
-                    "comments": false,
-                    "strings": true
-                },
-                "editor.autoIndent": "full"
-            }
-        },
-        "commands": [
-            {
-                "command": "azure-pipelines.reset-state",
-                "title": "Reset 'do not ask again' messages",
-                "category": "Azure Pipelines"
-            }
-        ]
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "webpack --mode production --progress --color",
-        "compile:dev": "webpack --mode development --progress --color",
-        "compile:test": "tsc --project ./tsconfig.test.json",
-        "lint": "eslint .",
-        "watch": "webpack --mode development --progress --color --watch",
-        "test": "npm run compile:test && vscode-test"
-    },
-    "devDependencies": {
-        "@types/mocha": "^9.0.0",
-        "@types/node": "~20.15.0",
-        "@types/vscode": "~1.82.0",
-        "@typescript-eslint/eslint-plugin": "^6.11.0",
-        "@typescript-eslint/parser": "^6.11.0",
-        "@vscode/test-cli": "^0.0.10",
-        "@vscode/test-electron": "^2.4.1",
-        "eslint": "^8.54.0",
-        "mocha": "^9.1.1",
-        "ts-loader": "^8.0.14",
-        "typescript": "~5.2.2",
-        "webpack": "^5.76.0",
-        "webpack-cli": "^4.4.0"
-    },
-    "dependencies": {
-        "@vscode/extension-telemetry": "^0.5.1",
-        "azure-devops-node-api": "^11.0.1",
-        "azure-pipelines-language-server": "0.8.0",
-        "vscode-languageclient": "^7.0.0",
-        "vscode-uri": "^3.0.2"
-    }
+	"aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
+	"capabilities": {
+		"untrustedWorkspaces": {
+			"restrictedConfigurations": [
+				"azure-pipelines.customSchemaFile"
+			],
+			"supported": "limited"
+		}
+	},
+	"contributes": {
+		"commands": [
+			{
+				"category": "Azure Pipelines",
+				"command": "azure-pipelines.reset-state",
+				"title": "Reset 'do not ask again' messages"
+			}
+		],
+		"configuration": {
+			"properties": {
+				"azure-pipelines.1ESPipelineTemplatesSchemaFile": {
+					"default": false,
+					"description": "Use 1ES Pipeline Template schema file",
+					"markdownDescription": "If enabled, [1ES Pipeline Template schema file](https://aka.ms/1espt) will take precedence over custom schema file when user is signed in with `@microsoft.com` account and the schema is available in the ADO organization.",
+					"type": "boolean"
+				},
+				"azure-pipelines.customSchemaFile": {
+					"description": "Use a different schema file",
+					"scope": "machine-overridable",
+					"type": "string"
+				}
+			},
+			"title": "Azure Pipelines"
+		},
+		"configurationDefaults": {
+			"[azure-pipelines]": {
+				"editor.autoIndent": "full",
+				"editor.insertSpaces": true,
+				"editor.quickSuggestions": {
+					"comments": false,
+					"other": true,
+					"strings": true
+				},
+				"editor.tabSize": 2
+			}
+		},
+		"grammars": [
+			{
+				"language": "azure-pipelines",
+				"path": "./syntaxes/yaml.tmLanguage.json",
+				"scopeName": "source.yaml"
+			}
+		],
+		"languages": [
+			{
+				"aliases": [
+					"Azure Pipelines"
+				],
+				"configuration": "./language-configuration.json",
+				"filenamePatterns": [
+					"azure-pipelines.{yml,yaml}",
+					".azure-pipelines.{yml,yaml}",
+					"**/azure-pipelines/**/*.{yml,yaml}",
+					"**/.azure-pipelines/**/*.{yml,yaml}",
+					"**/.pipelines/**/*.{yml,yaml}",
+					"vsts-ci.{yml,yaml}",
+					".vsts-ci.{yml,yaml}"
+				],
+				"icon": {
+					"dark": "./assets/pipelines-file-icon.svg",
+					"light": "./assets/pipelines-file-icon.svg"
+				},
+				"id": "azure-pipelines"
+			}
+		]
+	},
+	"dependencies": {},
+	"description": "Syntax highlighting, IntelliSense, and more for Azure Pipelines YAML",
+	"devDependencies": {
+		"@types/node": "~20.15.0",
+		"ts-loader": "^8.0.14"
+	},
+	"displayName": "Azure Pipelines",
+	"galleryBanner": {
+		"color": "#D4DCEC",
+		"theme": "light"
+	},
+	"icon": "assets/pipelines.png",
+	"main": "./dist/extension",
+	"name": "azure-pipelines",
+	"scripts": {
+		"compile": "webpack --mode production --progress --color",
+		"compile:dev": "webpack --mode development --progress --color",
+		"compile:test": "tsc --project ./tsconfig.test.json"
+	}
 }
