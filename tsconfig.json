@@ -1,33 +1,33 @@
 {
-	"compilerOptions": {
-		/* Specify module code generation. */
-		"module": "ES2022",
+    "compilerOptions": {
+        /* Specify module code generation. */
+        "module": "ES2022",
 
-		/*  */
-		"moduleResolution": "Bundler",
+        /*  */
+        "moduleResolution": "Bundler",
 
-		/* Report errors for fallthrough cases in switch statement. */
-		"noFallthroughCasesInSwitch": true,
+        /* Report errors for fallthrough cases in switch statement. */
+        "noFallthroughCasesInSwitch": true,
 
-		/* Report error when not all code paths in function return a value. */
-		"noImplicitReturns": true,
+        /* Report error when not all code paths in function return a value. */
+        "noImplicitReturns": true,
 
-		/* Report errors on unused locals. */
-		"noUnusedLocals": true,
+        /* Report errors on unused locals. */
+        "noUnusedLocals": true,
 
-		/* Report errors on unused parameters. */
-		//"noUnusedParameters": true,
+        /* Report errors on unused parameters. */
+        //"noUnusedParameters": true,
 
-		/* Redirect output structure to the directory. */
-		"outDir": "out",
+        /* Redirect output structure to the directory. */
+        "outDir": "out",
 
-		/* Specifies the root directory of input files. Only use to control the output directory structure with --outDir. */
-		"rootDir": "src",
+        /* Specifies the root directory of input files. Only use to control the output directory structure with --outDir. */
+        "rootDir": "src",
 
-		/* Generates corresponding .map file. */
-		"sourceMap": true,
+        /* Generates corresponding .map file. */
+        "sourceMap": true,
 
-		/* Enable all strict type checking options.
+        /* Enable all strict type checking options.
            Enabling --strict enables
                 --noImplicitAny,
                 --noImplicitThis,
@@ -36,10 +36,12 @@
                 --strictFunctionTypes
                 --strictPropertyInitialization.
         */
-		"strict": true,
+        "strict": true,
 
-		/* Specify ECMAScript target version. */
-		"target": "ES2022"
-	},
-	"include": ["src"]
+        /* Specify ECMAScript target version. */
+        "target": "ES2022",
+    },
+    "include": [
+        "src"
+    ]
 }
