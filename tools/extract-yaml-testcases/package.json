@@ -1,7 +1,7 @@
 {
 	"description": "A tool for extracting YAML test cases from a C# file",
 	"devDependencies": {
-		"@types/node": "22.8.5"
+		"@types/node": "22.8.6"
 	},
 	"main": "./out/main.js",
 	"name": "extract-yaml-testcases",
