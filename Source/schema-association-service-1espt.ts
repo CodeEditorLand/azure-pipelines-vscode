@@ -17,16 +17,20 @@ export async function get1ESPTSchemaUri(azureDevOpsClient: azdev.WebApi, organiz
         if (session.account.label.endsWith("@microsoft.com")) {
             const gitApi = await azureDevOpsClient.getGitApi();
             // Using getItem from GitApi: getItem(repositoryId: string, path: string, project?: string, scopePath?: string, recursionLevel?: GitInterfaces.VersionControlRecursionType, includeContentMetadata?: boolean, latestProcessedChange?: boolean, download?: boolean, versionDescriptor?: GitInterfaces.GitVersionDescriptor, includeContent?: boolean, resolveLfs?: boolean, sanitize?: boolean): Promise<GitInterfaces.GitItem>;
+
             const schemaFile = await gitApi.getItem(repoId1espt, "schema/1espt-base-schema.json", "1ESPipelineTemplates", undefined, undefined, true, true, true, undefined, true, true);
 
             const { content } = schemaFile;
+
             if (content === undefined) {
                 logger.log(`File was retrieved without content for org: ${organizationName}`, 'SchemaDetection');
+
                 return undefined;
             }
 
             const schemaUri = Utils.joinPath(context.globalStorageUri, '1ESPTSchema', `${organizationName}-1espt-schema.json`);
             await vscode.workspace.fs.writeFile(schemaUri, Buffer.from(content));
+
             return schemaUri;
         }
         else {
@@ -54,6 +58,7 @@ export async function get1ESPTSchemaUri(azureDevOpsClient: azdev.WebApi, organiz
  */
 export async function getCached1ESPTSchema(context: vscode.ExtensionContext, organizationName: string, session: vscode.AuthenticationSession, lastUpdated1ESPTSchema: Map<string, Date>): Promise<URI | undefined> {
     const lastUpdatedDate = lastUpdated1ESPTSchema.get(organizationName);
+
     if (!lastUpdatedDate) {
         return undefined;
     }
@@ -66,6 +71,7 @@ export async function getCached1ESPTSchema(context: vscode.ExtensionContext, org
                 try {
                     await vscode.workspace.fs.stat(schemaUri1ESPT);
                     logger.log("Returning cached schema for 1ESPT", 'SchemaDetection');
+
                     return schemaUri1ESPT;
                 } catch {
                     // Expected failure if file doesn't exist.
@@ -105,11 +111,13 @@ export async function getCached1ESPTSchema(context: vscode.ExtensionContext, org
 export async function get1ESPTRepoIdIfAvailable(azureDevOpsClient: azdev.WebApi, organizationName: string): Promise<string> {
     try {
         const gitApi = await azureDevOpsClient.getGitApi();
+
         const repository = await gitApi.getRepository('1ESPipelineTemplates', '1ESPipelineTemplates');
         // Types are wrong and getRepository cah return null.
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (repository?.id === undefined) {
             logger.log(`1ESPipelineTemplates repo not found for org ${organizationName}`, `SchemaDetection`);
+
             return ""; // 1ESPT repo not found
         }
 
@@ -117,6 +125,7 @@ export async function get1ESPTRepoIdIfAvailable(azureDevOpsClient: azdev.WebApi,
     }
     catch (error) {
         logger.log(`Error: ${error instanceof Error ? error.message : String(error)} while checking eligibility for enhanced Intellisense for 1ESPT schema for org: ${organizationName}.`, 'SchemaDetection');
+
         return "";
     }
 }

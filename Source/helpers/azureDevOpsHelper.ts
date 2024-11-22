@@ -22,7 +22,9 @@ export function isAzureReposUrl(remoteUrl: string): boolean {
 export function getRepositoryDetailsFromRemoteUrl(remoteUrl: string): { organizationName: string, projectName: string, repositoryName: string } {
     if (remoteUrl.includes(AzureReposUrl)) {
         const part = remoteUrl.substring(remoteUrl.indexOf(AzureReposUrl) + AzureReposUrl.length);
+
         const parts = part.split('/');
+
         if (parts.length !== 4) {
             throw new Error(Messages.failedToDetermineAzureRepoDetails);
         }
@@ -34,7 +36,9 @@ export function getRepositoryDetailsFromRemoteUrl(remoteUrl: string): { organiza
         };
     } else if (remoteUrl.includes(VSOUrl)) {
         const part = remoteUrl.substring(remoteUrl.indexOf(VSOUrl) + VSOUrl.length);
+
         const organizationName = remoteUrl.substring(remoteUrl.indexOf('https://') + 'https://'.length, remoteUrl.indexOf('.visualstudio.com'));
+
         const parts = part.split('/');
 
         if (parts.length === 4 && parts[0].toLowerCase() === 'defaultcollection') {
@@ -53,8 +57,11 @@ export function getRepositoryDetailsFromRemoteUrl(remoteUrl: string): { organiza
         };
     } else if (remoteUrl.includes(SSHAzureReposUrl) || remoteUrl.includes(SSHVsoReposUrl)) {
         const urlFormat = remoteUrl.includes(SSHAzureReposUrl) ? SSHAzureReposUrl : SSHVsoReposUrl;
+
         const part = remoteUrl.substring(remoteUrl.indexOf(urlFormat) + urlFormat.length);
+
         const parts = part.split('/');
+
         if (parts.length !== 3) {
             throw new Error(Messages.failedToDetermineAzureRepoDetails);
         }

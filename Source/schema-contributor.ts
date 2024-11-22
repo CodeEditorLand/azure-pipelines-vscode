@@ -50,6 +50,7 @@ class SchemaContributor {
     public requestCustomSchema(resource: string): string {
         for (const contributor of this._customSchemaContributors.values()) {
             const uri = contributor.requestSchema(resource);
+
             if (uri) {
                 return uri;
             }
@@ -72,7 +73,9 @@ class SchemaContributor {
      */
     public requestCustomSchemaContent(uri: string): string {
         const { scheme } = URI.parse(uri);
+
         const contributor = this._customSchemaContributors.get(scheme);
+
         if (contributor) {
             return contributor.requestSchemaContent(uri);
         }

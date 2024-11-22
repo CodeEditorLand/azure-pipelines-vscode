@@ -34,12 +34,15 @@ export async function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(telemetryHelper);
 
     logger.log('Extension has been activated!', 'ExtensionActivated');
+
     return schemaContributor;
 }
 
 async function activateYmlContributor(context: vscode.ExtensionContext) {
     const serverOptions: languageclient.ServerOptions = getServerOptions(context);
+
     const clientOptions: languageclient.LanguageClientOptions = getClientOptions();
+
     const client = new languageclient.LanguageClient(LANGUAGE_IDENTIFIER, 'Azure Pipelines Language', serverOptions, clientOptions);
 
     const disposable = client.start();
@@ -119,6 +122,7 @@ async function loadSchema(
     workspaceFolder?: vscode.WorkspaceFolder): Promise<void> {
     if (workspaceFolder === undefined) {
         const textDocument = vscode.window.activeTextEditor?.document;
+
         if (textDocument?.languageId !== LANGUAGE_IDENTIFIER) {
             return;
         }
@@ -127,6 +131,7 @@ async function loadSchema(
     }
 
     const schemaFilePath = await locateSchemaFile(context, workspaceFolder);
+
     const schema = getSchemaAssociation(schemaFilePath);
     client.sendNotification(SchemaAssociationNotification.type, schema);
 }

@@ -11,6 +11,7 @@ const extensionName = 'ms-azure-devops.azure-pipelines';
 /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 const packageJSON = vscode.extensions.getExtension(extensionName)?.packageJSON; // Guaranteed to exist
 export const extensionVersion: string = packageJSON.version;
+
 const aiKey: string = packageJSON.aiKey;
 /* eslint-enable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 
@@ -61,6 +62,7 @@ class TelemetryHelper {
     // TODO: Rename to something with less potential for confusion, like 'time' or 'timeFunction'?
     public async executeFunctionWithTimeTelemetry<T>(callback: () => Promise<T>, telemetryKey: string): Promise<T> {
         const startTime = Date.now();
+
         try {
             return callback();
         }

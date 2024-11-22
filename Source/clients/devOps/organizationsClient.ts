@@ -20,6 +20,7 @@ export class OrganizationsClient {
         }
 
         const { authenticatedUser } = await this.fetch<ConnectionData>("https://app.vssps.visualstudio.com/_apis/connectiondata");
+
         if (authenticatedUser === undefined) {
             return [];
         }
@@ -27,7 +28,9 @@ export class OrganizationsClient {
         const { value: organizations } = await this.fetch<{ value: Organization[] }>(`https://app.vssps.visualstudio.com/_apis/accounts?memberId=${authenticatedUser.id}&api-version=7.0`);
         this.organizations = organizations.sort((org1, org2) => {
             const account1 = org1.accountName.toLowerCase();
+
             const account2 = org2.accountName.toLowerCase();
+
             if (account1 < account2) {
                 return -1;
             } else if (account1 > account2) {
@@ -50,6 +53,7 @@ export class OrganizationsClient {
                 'X-TFS-Session': telemetryHelper.getJourneyId(),
             }
         });
+
         return (await response.json()) as T;
     }
 }

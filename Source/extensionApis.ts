@@ -6,6 +6,7 @@ let gitExtensionApi: API | undefined;
 export async function getGitExtensionApi(): Promise<API> {
     if (gitExtensionApi === undefined) {
         const gitExtension = vscode.extensions.getExtension<GitExtension>("vscode.git");
+
         if (!gitExtension) {
             throw new Error(Messages.gitExtensionUnavailable);
         }
