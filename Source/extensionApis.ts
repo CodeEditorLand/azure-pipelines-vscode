@@ -4,6 +4,7 @@ import * as Messages from "./messages";
 import { API, GitExtension } from "./typings/git";
 
 let gitExtensionApi: API | undefined;
+
 export async function getGitExtensionApi(): Promise<API> {
 	if (gitExtensionApi === undefined) {
 		const gitExtension =

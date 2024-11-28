@@ -29,6 +29,7 @@ import {
 
 const selectOrganizationEvent =
 	new vscode.EventEmitter<vscode.WorkspaceFolder>();
+
 export const onDidSelectOrganization = selectOrganizationEvent.event;
 
 /**

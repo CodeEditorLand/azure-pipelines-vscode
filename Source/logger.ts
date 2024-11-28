@@ -9,6 +9,7 @@ import { window } from "vscode";
 // TODO: Set env var or something to turn logging on/off?
 
 const outputChannel = window.createOutputChannel("Azure Pipelines");
+
 export function log(message: string, event?: string): void {
 	let logMessage = `(${new Date().toLocaleString()}) `;
 

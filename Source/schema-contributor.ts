@@ -95,6 +95,7 @@ class SchemaContributor {
 const schemaContributor = new SchemaContributor();
 
 export const CUSTOM_SCHEMA_REQUEST = "custom/schema/request";
+
 export const CUSTOM_CONTENT_REQUEST = "custom/schema/content";
 
 export { schemaContributor };
