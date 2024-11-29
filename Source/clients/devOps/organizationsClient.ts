@@ -7,8 +7,11 @@ import {
 
 export interface Organization {
 	accountId: string;
+
 	accountName: string;
+
 	accountUri: string;
+
 	properties: Record<string, unknown>;
 }
 
@@ -37,6 +40,7 @@ export class OrganizationsClient {
 		}>(
 			`https://app.vssps.visualstudio.com/_apis/accounts?memberId=${authenticatedUser.id}&api-version=7.0`,
 		);
+
 		this.organizations = organizations.sort((org1, org2) => {
 			const account1 = org1.accountName.toLowerCase();
 
@@ -47,6 +51,7 @@ export class OrganizationsClient {
 			} else if (account1 > account2) {
 				return 1;
 			}
+
 			return 0;
 		});
 

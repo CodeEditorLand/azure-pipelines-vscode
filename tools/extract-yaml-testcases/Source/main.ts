@@ -7,7 +7,9 @@ if (process.argv.length <= 2) {
 	const options = parseOptions(process.argv);
 
 	const data = await fs.readFile(options.input, "utf-8");
+
 	await fs.mkdir(options.outputDir, { recursive: true });
+
 	await extractYaml(data, options.outputDir);
 }
 
@@ -20,6 +22,7 @@ function parseOptions(rawArgs: string[]): { input: string; outputDir: string } {
 
 	if (interestingArgs.length > 2) {
 		usage();
+
 		process.exit(1);
 	}
 
@@ -37,6 +40,7 @@ async function extractYaml(fileData: string, outputDir: string): Promise<void> {
 
 	while (chunk !== null) {
 		await outputYaml(chunk[1], chunk[2], outputDir);
+
 		chunk = matcher.exec(fileData);
 	}
 }
@@ -67,8 +71,11 @@ async function outputYaml(
 			/foo@1|myTask@1|myOtherTask@2/gi,
 			"Bash@3",
 		);
+
 		await fs.writeFile(finalFileName, cookedContents, "utf8");
+
 		mlString = multilineStringMatcher.exec(body);
+
 		number++;
 	}
 }

@@ -63,7 +63,9 @@ let repoId1espt: string | undefined = undefined;
 
 export async function resetDoNotAskState(context: vscode.ExtensionContext) {
 	await context.globalState.update(DO_NOT_ASK_SIGN_IN_KEY, undefined);
+
 	await context.globalState.update(DO_NOT_ASK_SELECT_ORG_KEY, undefined);
+
 	logger.log("State is reset");
 }
 
@@ -79,6 +81,7 @@ export async function locateSchemaFile(
 				`Detecting schema for workspace folder ${workspaceFolder.name}`,
 				"SchemaDetection",
 			);
+
 			schemaUri = await autoDetectSchema(context, workspaceFolder);
 
 			if (schemaUri) {
@@ -182,9 +185,11 @@ async function autoDetectSchema(
 
 			if (repo.state.HEAD?.upstream !== undefined) {
 				const remoteName = repo.state.HEAD.upstream.remote;
+
 				remoteUrl = repo.state.remotes.find(
 					(remote) => remote.name === remoteName,
 				)?.fetchUrl;
+
 				logger.log(
 					`Found remote URL for ${workspaceFolder.name}: ${remoteUrl}`,
 					"SchemaDetection",
@@ -227,6 +232,7 @@ async function autoDetectSchema(
 		if (azurePipelinesDetails?.[workspaceFolder.name] !== undefined) {
 			// If we already have cached information for this workspace folder, use it.
 			const details = azurePipelinesDetails[workspaceFolder.name];
+
 			organizationName = details.organization;
 
 			logger.log(
@@ -259,6 +265,7 @@ async function autoDetectSchema(
 			// If there's only one organization, we can just use that.
 			if (organizations.length === 1) {
 				organizationName = organizations[0];
+
 				logger.log(
 					`Using only available organization ${organizationName} for ${workspaceFolder.name}`,
 					"SchemaDetection",
@@ -372,6 +379,7 @@ async function autoDetectSchema(
 			`No account found for ${organizationName}`,
 			"SchemaDetection",
 		);
+
 		void vscode.window
 			.showErrorMessage(
 				format(Messages.unableToAccessOrganization, organizationName),
@@ -385,6 +393,7 @@ async function autoDetectSchema(
 					});
 				}
 			});
+
 		await delete1ESPTSchemaFileIfPresent(context);
 
 		return undefined;
@@ -514,6 +523,7 @@ async function autoDetectSchema(
 	const taskAgentApi = await azureDevOpsClient.getTaskAgentApi();
 
 	const schema = JSON.stringify(await taskAgentApi.getYamlSchema());
+
 	await vscode.workspace.fs.writeFile(schemaUri, Buffer.from(schema));
 
 	seenOrganizations.add(organizationName);
@@ -550,6 +560,7 @@ export async function getAzureDevOpsSessions(
 
 		try {
 			await delete1ESPTSchemaFileIfPresent(context);
+
 			logger.log(
 				"1ESPTSchema folder deleted as user is not signed in",
 				"SchemaDetection",
@@ -603,8 +614,10 @@ export async function getAzureDevOpsSessions(
 
 		const data = (await response.json()) as {
 			value: { tenantId: string }[];
+
 			nextLink?: string;
 		};
+
 		nextLink = data.nextLink;
 
 		for (const tenant of data.value) {

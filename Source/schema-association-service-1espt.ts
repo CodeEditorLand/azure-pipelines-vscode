@@ -55,6 +55,7 @@ export async function get1ESPTSchemaUri(
 				"1ESPTSchema",
 				`${organizationName}-1espt-schema.json`,
 			);
+
 			await vscode.workspace.fs.writeFile(
 				schemaUri,
 				Buffer.from(content),
@@ -71,6 +72,7 @@ export async function get1ESPTSchemaUri(
 			"SchemaDetection",
 		);
 	}
+
 	return undefined;
 }
 
@@ -112,6 +114,7 @@ export async function getCached1ESPTSchema(
 			) {
 				try {
 					await vscode.workspace.fs.stat(schemaUri1ESPT);
+
 					logger.log(
 						"Returning cached schema for 1ESPT",
 						"SchemaDetection",
@@ -143,6 +146,7 @@ export async function getCached1ESPTSchema(
 						});
 					}
 				});
+
 			logger.log(
 				`Skipping cached 1ESPT schema for ${organizationName} as user is not signed in with Microsoft account`,
 				`SchemaDetection`,

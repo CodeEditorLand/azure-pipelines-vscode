@@ -23,7 +23,9 @@ export function isAzureReposUrl(remoteUrl: string): boolean {
 
 export function getRepositoryDetailsFromRemoteUrl(remoteUrl: string): {
 	organizationName: string;
+
 	projectName: string;
+
 	repositoryName: string;
 } {
 	if (remoteUrl.includes(AzureReposUrl)) {

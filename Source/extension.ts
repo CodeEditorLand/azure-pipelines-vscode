@@ -37,6 +37,7 @@ const DOCUMENT_SELECTOR = [
 
 export async function activate(context: vscode.ExtensionContext) {
 	telemetryHelper.setTelemetry("isActivationEvent", "true");
+
 	await telemetryHelper.callWithTelemetryAndErrorHandling(
 		"azurePipelines.activate",
 		async () => {
@@ -66,6 +67,7 @@ async function activateYmlContributor(context: vscode.ExtensionContext) {
 	);
 
 	const disposable = client.start();
+
 	context.subscriptions.push(disposable);
 
 	// If this throws, the telemetry event in activate() will catch & log it
@@ -184,6 +186,7 @@ async function loadSchema(
 	const schemaFilePath = await locateSchemaFile(context, workspaceFolder);
 
 	const schema = getSchemaAssociation(schemaFilePath);
+
 	client.sendNotification(SchemaAssociationNotification.type, schema);
 }
 

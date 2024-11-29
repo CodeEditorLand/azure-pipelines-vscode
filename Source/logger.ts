@@ -18,5 +18,6 @@ export function log(message: string, event?: string): void {
 	}
 
 	logMessage += message;
+
 	outputChannel.appendLine(logMessage);
 }

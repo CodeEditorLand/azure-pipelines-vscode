@@ -7,6 +7,7 @@ import { URI } from "vscode-uri";
 
 interface SchemaContributorProvider {
 	readonly requestSchema: (resource: string) => string;
+
 	readonly requestSchemaContent: (uri: string) => string;
 }
 
