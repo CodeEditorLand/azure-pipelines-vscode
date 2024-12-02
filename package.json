@@ -77,7 +77,7 @@
 	"dependencies": {},
 	"description": "Syntax highlighting, IntelliSense, and more for Azure Pipelines YAML",
 	"devDependencies": {
-		"@types/node": "22.10.0",
+		"@types/node": "22.10.1",
 		"ts-loader": "9.5.1"
 	},
 	"displayName": "Azure Pipelines",
