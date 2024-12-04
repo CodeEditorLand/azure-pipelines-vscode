@@ -85,8 +85,8 @@
 	"description": "Syntax highlighting, IntelliSense, and more for Azure Pipelines YAML",
 	"devDependencies": {
 		"@types/eslint__js": "^8.42.3",
-		"@types/node": "~20.15.0",
-		"ts-loader": "^8.0.14"
+		"@types/node": "~22.10.1",
+		"ts-loader": "^9.5.1"
 	},
 	"displayName": "Azure Pipelines",
 	"extensionDependencies": [
