@@ -1,13 +1,20 @@
 {
-	"description": "A tool for extracting YAML test cases from a C# file",
-	"devDependencies": {
-		"@types/node": "22.10.1"
-	},
-	"main": "./out/main.js",
 	"name": "extract-yaml-testcases",
+	"version": "1.0.0",
+	"description": "A tool for extracting YAML test cases from a C# file",
+	"license": "MIT",
+	"author": "Microsoft",
+	"type": "module",
+	"main": "./out/main.js",
 	"scripts": {
 		"compile": "tsc -p ./",
 		"prestart": "npm run compile",
-		"start": "node ./out/main.js"
+		"start": "node ./out/main.js",
+		"watch": "tsc -watch -p ./"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@types/node": "~20.9.2",
+		"typescript": "~5.2.2"
 	}
 }
