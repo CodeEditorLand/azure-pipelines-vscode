@@ -1,15 +1,14 @@
 {
-	"dependencies": {},
-	"description": "A tool for extracting YAML test cases from a C# file",
-	"devDependencies": {
-		"@types/node": "~20.9.2",
-		"typescript": "~5.2.2"
-	},
-	"main": "./out/main.js",
 	"name": "extract-yaml-testcases",
+	"description": "A tool for extracting YAML test cases from a C# file",
+	"main": "./out/main.js",
 	"scripts": {
 		"compile": "tsc -p ./",
 		"prestart": "npm run compile",
 		"start": "node ./out/main.js"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@types/node": "~20.9.2"
 	}
 }
