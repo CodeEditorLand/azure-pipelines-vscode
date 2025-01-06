@@ -84,8 +84,8 @@
 	"dependencies": {},
 	"devDependencies": {
 		"@types/eslint__js": "8.42.3",
-		"@types/node": "20.15.0",
-		"ts-loader": "8.0.14"
+		"@types/node": "22.10.5",
+		"ts-loader": "9.5.1"
 	},
 	"extensionDependencies": [
 		"vscode.git"
