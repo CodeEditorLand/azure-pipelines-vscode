@@ -84,7 +84,7 @@
 	"dependencies": {},
 	"devDependencies": {
 		"@types/eslint__js": "8.42.3",
-		"@types/node": "22.10.6",
+		"@types/node": "22.10.7",
 		"ts-loader": "9.5.2"
 	},
 	"extensionDependencies": [
